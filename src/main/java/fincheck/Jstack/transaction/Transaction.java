@@ -1,5 +1,7 @@
 package fincheck.Jstack.transaction;
 
+import fincheck.Jstack.bankAccount.BankAccount;
+import fincheck.Jstack.category.Category;
 import fincheck.Jstack.user.User;
 import jakarta.persistence.*;
 
@@ -12,11 +14,6 @@ public class Transaction {
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
     private UUID id;
-
-    @JoinColumn(name = "user_id")
-    private UUID userId;
-    private UUID bankAccountId;
-    private UUID categoryId;
     private String name;
     private Long value;
     private LocalDateTime date;
@@ -24,5 +21,9 @@ public class Transaction {
 
     @ManyToOne
     private User user;
+    @ManyToOne
+    private BankAccount bankAccount;
+    @ManyToOne
+    private Category category;
 
 }
